@@ -401,3 +401,4 @@ H:\Rajesh_Projects\TSD-Automaton\TSD-Automaton\MAW\obj\Debug\netcoreapp3.1\TSDHy
 H:\Rajesh_Projects\TSD-Automaton\TSD-Automaton\MAW\obj\Debug\netcoreapp3.1\TSDHybridFramework.dll
 H:\Rajesh_Projects\TSD-Automaton\TSD-Automaton\MAW\obj\Debug\netcoreapp3.1\TSDHybridFramework.pdb
 H:\Rajesh_Projects\TSD-Automaton\TSD-Automaton\MAW\obj\Debug\netcoreapp3.1\TSDHybridFramework.genruntimeconfig.cache
+H:\Rajesh_Projects\TSD-Automaton\TSD-Automaton\MAW\obj\Debug\netcoreapp3.1\TSDHybridFramework.csproj.AssemblyReference.cache
