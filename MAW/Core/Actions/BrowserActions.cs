@@ -3,26 +3,31 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading;
 
 namespace MAW.Core.Actions
 {
     class BrowserActions
     {
-    
+       
         public static ReadOnlyCollection<IWebElement> elements(By locator)
         {
-           return Browser.GetBrowser().FindElements(locator);
-
+			return Browser.Wait()
+				.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
         }
 
+		public static bool waitUntilHidden(By locator) {
+			return Browser.Wait()
+				.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(locator));
+
+		}
+
         public static IWebElement element(By locator) {
-             return Browser.Wait()
-                .Until(el => el.FindElement(locator));
+
+		return	Browser.Wait()
+				.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
+
         }
       public static void Click(By locator)
         {
@@ -370,7 +375,10 @@ public void switchDefaultWindow()
 }
 
 		private Random random = new Random();
-		public string RandomString(int length)
+
+        public object Obj { get => obj; set => obj = value; }
+
+        public string RandomString(int length)
 		{
 			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 			return new string(Enumerable.Repeat(chars, length)
