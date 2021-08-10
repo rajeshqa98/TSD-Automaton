@@ -11,7 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using TSDHybridFramework.Core.DataMapper;
-
+using TSDHybridFramework.Core.Utils;
 
 namespace MAW.Core.Utils
 {
@@ -22,10 +22,9 @@ namespace MAW.Core.Utils
 
 
         public Excel(String fileName) {
-            var path = System.Reflection.Assembly.GetCallingAssembly().CodeBase;
-            var actualPath = path.Substring(0, path.LastIndexOf("bin"));
-            var projectPath = new Uri(actualPath).LocalPath;
-            var excelFilePath = projectPath + String.Format("TestData\\{0}.xlsx", fileName); ;
+            
+            var projectPath = Helper.GetProjectBaseDirectoryPath();
+            var excelFilePath = projectPath + String.Format("TestData\\{0}.xlsx", fileName); 
             excel = new Mapper(excelFilePath);
         }
 
@@ -127,30 +126,6 @@ namespace MAW.Core.Utils
             else
                 return false;
         }
-        static void Main(string[] args)
-        {
-
-            /* List<User> users =User.GetFromExcel();
-
-             foreach (User user in users) {
-                 Console.WriteLine(user.Name);
-                 Console.WriteLine(user.ToString());
-
-
-             }*/
-
-            Excel excel = new Excel("Data");
-            List<Dictionary<string, string>> rows
-                = excel.ReadSheet("User");
-
-            Console.WriteLine(rows.Count);
-             
-
-            foreach (KeyValuePair<string, string> ele2 in rows[1])
-            {
-                Console.WriteLine("{0} : {1}", ele2.Key, ele2.Value);
-            }
-
-        }
+       
     }
 }
